@@ -12,12 +12,12 @@ import Constants from "expo-constants";
 import Header from "./components/Header";
 import SegmentTabs from "./components/SegmentTabs";
 import PosterCarousel from "./components/PosterCarousel";
-import ScriptBox from "./components/ScriptBox";
+import ScriptBox from "./components/ScriptsBox";
 import SettingsRow from "./components/SettingsRow";
 import GenerateButton from "./components/GenerateButton";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("smart");
+  const [activeTab, setActiveTab] = useState<"smart" | "advanced">("smart");
   const [activePoster, setActivePoster] = useState(0);
 
   return (
@@ -28,9 +28,9 @@ export default function App() {
         <Header />
 
         {/* ✅ Centered Segment Tabs */}
-        <View style={styles.tabsWrapper}>
-          <SegmentTabs activeTab={activeTab} onChange={setActiveTab} />
-        </View>
+      <View style={styles.tabsWrapper}>
+        <SegmentTabs activeTab={activeTab} onChange={setActiveTab} />
+      </View>
 
         <Text style={styles.title}>
           What type of posters do you want to create?

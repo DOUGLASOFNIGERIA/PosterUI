@@ -12,6 +12,7 @@
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
     "@react-native/new-app-screen": "0.81.4",
+    "expo-constants": "^18.0.8",
     "expo-linear-gradient": "~14.1.5",
     "react": "19.1.0",
     "react-native": "0.81.4",

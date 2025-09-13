@@ -6,12 +6,12 @@ export default function ScriptBox() {
     <View style={styles.box}>
       <TextInput
         style={styles.input}
-        placeholder="stunning promotional image..."
-        placeholderTextColor="#aaa"
+        placeholder="stunning promotional image of a deliciously decorated cake, emphasizing its layers, frosting, and toppings in an enticing settings"
+        placeholderTextColor="#fff"
         multiline
       />
       <View style={styles.icon}>
-        <Ionicons name="image-outline" size={20} color="#aaa" />
+        <Ionicons name="image-outline" size={20} color="#fff" />
       </View>
     </View>
   );
@@ -20,7 +20,7 @@ export default function ScriptBox() {
 const styles = StyleSheet.create({
   box: {
     marginTop: 16,
-    borderRadius: 12,
+    borderRadius: 10,
     backgroundColor: "#111",
     minHeight: 120,
     padding: 12,

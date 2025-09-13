@@ -26,6 +26,7 @@ export default function PosterCarousel({ activeIndex, setActiveIndex }: Props) {
     <FlatList<Poster>
       data={posters}
       horizontal
+      // @ts-expect-error showsHorizontalScrollIndicator exists at runtime
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.list}
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
   },
   active: {
     borderColor: '#ffffff',
+    borderWidth: 3,
   },
   img: {
     width: '100%',

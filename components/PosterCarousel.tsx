@@ -1,4 +1,5 @@
 import {
+  View,
   Text,
   FlatList,
   Image,
@@ -7,18 +8,14 @@ import {
   Dimensions,
 } from 'react-native';
 
+
+
+import { posterData } from '../data/PosterData';
+
 type Poster = { id: string; title: string; image: string };
 
-const posters: Poster[] = [
-  { id: '1', title: 'Display', image: 'https://via.placeholder.com/150x200' },
-  { id: '2', title: 'Promotion', image: 'https://via.placeholder.com/150x200' },
-  { id: '3', title: 'Branding', image: 'https://via.placeholder.com/150x200' },
-  {
-    id: '4',
-    title: 'Announcement',
-    image: 'https://via.placeholder.com/150x200',
-  },
-];
+const posters: Poster[] = posterData;
+
 
 const CARD_W = Dimensions.get('window').width * 0.28;
 
@@ -36,6 +33,7 @@ export default function PosterCarousel({ activeIndex, setActiveIndex }: Props) {
         const active = index === activeIndex;
         return (
           <Pressable
+          
             onPress={() => setActiveIndex(index)}
             style={[styles.card, active && styles.active]}>
             <Image source={{ uri: item.image }} style={styles.img} />
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   active: {
-    borderColor: '#00CED1',
+    borderColor: '#ffffff',
   },
   img: {
     width: '100%',

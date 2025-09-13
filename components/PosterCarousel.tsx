@@ -1,5 +1,4 @@
 import {
-  View,
   Text,
   FlatList,
   Image,
@@ -26,7 +25,6 @@ export default function PosterCarousel({ activeIndex, setActiveIndex }: Props) {
     <FlatList<Poster>
       data={posters}
       horizontal
-      // @ts-expect-error showsHorizontalScrollIndicator exists at runtime
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.list}

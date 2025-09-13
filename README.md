@@ -1,4 +1,6 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+*Cartolinks Solutions LTD  Internship Assignment*
+
+This is an internship assignment [**PosterUI Screen given at by Cartolinks Solutions LTD **](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli) and it is for mobile development.
 
 # Getting Started
 

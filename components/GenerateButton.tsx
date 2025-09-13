@@ -1,42 +1,52 @@
-
-import { Text, Pressable, StyleSheet, View } from "react-native";
+import { Pressable, Text, StyleSheet, Platform } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function GenerateButton() {
   return (
-    <Pressable style={styles.wrapper}>
-      <LinearGradient colors={["#00CED1", "#00CED180"]} style={styles.button}>
-        <View style={styles.dot} />
-        <Text style={styles.text}>Generate</Text>
-      </LinearGradient>
+    <Pressable style={styles.btn} onPress={() => console.log("Generate tapped")}>
+      {/* Gradient Dot with spread shadow */}
+      <LinearGradient
+        colors={["#87CEFA", "#1E90FF", "#FF69B4"]} // light blue → blue → pink
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 0.5 }}
+        style={styles.dot}
+      />
+      <Text style={styles.text}>Generate</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
+  btn: {
     marginTop: 24,
-    alignItems: "center",
-  },
-  button: {
-    flexDirection: "row",
+    backgroundColor: "#fff",
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
-    paddingVertical: 14,
-    borderRadius: 30,
-    backgroundColor: "#fff",
-    shadowColor: "#00CED1",
-    shadowOpacity: 0.4,
-    shadowRadius: 8,
-    elevation: 5,
+    flexDirection: "row",
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#000", // black text
+    marginLeft: 16,
   },
   dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: "#00CED1",
-    marginRight: 8,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#87CEFA", // light blue glow
+        shadowOpacity: 0.8,
+        shadowRadius: 6, // spread around
+        shadowOffset: { width: 0, height: 0 },
+      },
+      android: {
+        elevation: 6, // stronger glow on Android
+      },
+    }),
   },
-  text: { color: "#000", fontWeight: "600", fontSize: 16 },
 });

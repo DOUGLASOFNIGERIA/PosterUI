@@ -1,50 +1,56 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   StatusBar,
   ScrollView,
-  //Platform,
+  Platform,
 } from "react-native";
-//import Constants from "expo-constants";
-import { SafeAreaView } from "react-native-safe-area-context";
+import Constants from "expo-constants";
 
 import Header from "./components/Header";
 import SegmentTabs from "./components/SegmentTabs";
 import PosterCarousel from "./components/PosterCarousel";
-import ScriptBox from "./components/ScriptsBox";
+import ScriptBox from "./components/ScriptBox";
 import SettingsRow from "./components/SettingsRow";
 import GenerateButton from "./components/GenerateButton";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<"smart" | "advanced">("smart");
+  const [activeTab, setActiveTab] = useState("smart");
   const [activePoster, setActivePoster] = useState(0);
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
+    <View style={styles.container}>
       <StatusBar barStyle="light-content" />
+
       <ScrollView contentContainerStyle={styles.scroll}>
-        {/* ✅ Everything padded under status bar & safe areas */}
         <Header />
 
-        <SegmentTabs activeTab={activeTab} onChange={setActiveTab} />
+        {/* ✅ Centered Segment Tabs */}
+        <View style={styles.tabsWrapper}>
+          <SegmentTabs activeTab={activeTab} onChange={setActiveTab} />
+        </View>
 
-        <Text style={styles.title}>What type of posters do you want to create?</Text>
+        <Text style={styles.title}>
+          What type of posters do you want to create?
+        </Text>
 
-        <PosterCarousel activeIndex={activePoster} setActiveIndex={setActivePoster} />
+        <PosterCarousel
+          activeIndex={activePoster}
+          setActiveIndex={setActivePoster}
+        />
 
         <ScriptBox />
-
+        <Text style={styles.settingsHeading}>Settings</Text>
         <View style={styles.settingsBox}>
-          <Text style={styles.settingsHeading}>Settings</Text>
           <SettingsRow label="Size" value="1080 x 1920 px" />
           <SettingsRow label="Category" value="Foods and beverage" />
         </View>
 
         <GenerateButton />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -52,9 +58,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#070707",
+    paddingTop:
+      Platform.OS === "android" ? Constants.statusBarHeight : 0,
   },
   scroll: {
-    padding: 16,
+    padding: 4,
+  },
+  tabsWrapper: {
+    flexDirection: "row",
+    justifyContent: "center", // ⬅️ Center both tabs equally
+    marginVertical: 12,
   },
   title: {
     fontSize: 16,
@@ -63,16 +76,18 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   settingsBox: {
-    marginTop: 16,
-    borderRadius: 16,
+    marginTop: 0,
+    borderRadius: 10,
     backgroundColor: "#111",
-    paddingVertical: 4,
+    paddingVertical: 0,
   },
   settingsHeading: {
-    color: "#fff",
+    color: "#aaa",
     fontSize: 16,
     fontWeight: "600",
     paddingHorizontal: 14,
-    paddingVertical: 8,
+    paddingVertical: 12,
+    marginTop:16,
+    marginBottom:0,
   },
 });
